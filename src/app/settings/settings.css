@@ -1,0 +1,81 @@
+.set-page {
+  max-width: 100%;
+  /* background-color: antiquewhite; */
+  flex: 1 1 0;
+}
+
+.set-container {
+  height: 100%;
+  /* width: 500px;
+  margin: auto; */
+  /* background-color: antiquewhite; */
+}
+
+.set-wrapper {
+  background-color: var(--settings-bg-2);
+  border: 1px solid var(--settings-border-1);
+  border-radius: 10px;
+  width: 400px;
+  margin: auto;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.set-header h3 {
+  padding: 20px;
+}
+
+.set-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.set-form label,
+.set-form input {
+  width: 100%;
+}
+
+.set-form input {
+  padding: 10px;
+  border: 1px solid inherit;
+  /* background-color: transparent; */
+  transition: border 0.3s ease;
+}
+
+.set-form label {
+  padding: 5px;
+}
+
+.set-form input:focus {
+  outline: 2px solid rgb(10, 128, 206);
+  border-color: rgb(7, 70, 231);
+}
+
+.set-input {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.set-footer button {
+  padding: 10px;
+  border: 1px solid rgb(10, 128, 206);
+  background-color: rgb(10, 128, 206);
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.set-footer button:hover {
+  background-color: rgb(7, 70, 231);
+}
+
+.set-footer button:active {
+  background-color: rgb(5, 44, 144);
+}

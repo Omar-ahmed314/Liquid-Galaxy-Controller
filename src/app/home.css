@@ -1,0 +1,119 @@
+.home-page {
+  flex: 1 1 0;
+  /* background-color: aliceblue; */
+}
+
+.home-container {
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  /* background-color: antiquewhite; */
+}
+
+.connection-wrapper,
+.control-btns {
+  height: 50%;
+}
+
+.connection-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.connection-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.control-btns {
+  display: flex;
+  justify-content: center;
+}
+
+.control-btns button,
+.confirm-btns button {
+  height: max-content;
+  width: max-content;
+  margin: 0 10px;
+  padding: 10px 20px;
+  border: 1px solid var(--settings-border-1);
+  border-radius: 5px;
+  /* background-color: rgb(10, 128, 206); */
+  background-color: var(--settings-bg-2);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.control-btns button:hover,
+.confirm-btns button:hover {
+  box-shadow: 0 0 5px 2px var(--settings-border-1);
+}
+
+.control-btns button:active,
+.confirm-btns button:active {
+  background-color: var(--background);
+  outline: 3px solid aqua;
+}
+
+@media (max-width: 576px) {
+  .control-btns {
+    height: max-content;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    /* background-color: antiquewhite; */
+  }
+  .control-btns button {
+    /* width: 50%; */
+    align-self: start;
+  }
+}
+
+/* send kml pop window */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.overlay .file-window {
+  height: 150px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--settings-bg-2);
+  border: 1px solid var(--settings-border-1);
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.file-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirm-btns {
+  /* background-color: aliceblue; */
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.hidden {
+  display: none;
+}

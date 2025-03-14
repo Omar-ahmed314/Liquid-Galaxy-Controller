@@ -1,95 +1,63 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
+import styles from './page.module.css';
+import showLogo from './controllers/showLogo';
+import clearLogo from './controllers/clearLogo';
+import sendKml from './controllers/sendKml';
+import clearKml from './controllers/clearKml';
+import showBallon from './controllers/showBallon';
+import { getConnection } from './assets/auth';
+import { useState, useRef } from 'react';
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const connectionInfo = getConnection();
+  const connected = connectionInfo ? true : false;
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const fileInput = useRef(null);
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+  const handleSubmit = async function () {
+    const file = fileInput.current.files[0];
+    if (!file) {
+      console.error('No file selected');
+      return;
+    }
+
+    const response = await sendKml(file);
+    console.log(response);
+  };
+
+  return (
+    <div className="home-page">
+      <div className={'overlay'.concat(isFormOpen ? '' : ' hidden')}>
+        <div className="file-window">
+          <div className="file-wrapper">
+            <input
+              type="file"
+              name="filename"
+              accept="text/plain, .txt"
+              ref={fileInput}
             />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+          </div>
+          <div className="confirm-btns">
+            <button onClick={() => handleSubmit()}>Send Kml</button>
+            <button onClick={() => setIsFormOpen(false)}>Cancel</button>
+          </div>
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+      <div className="home-container container">
+        <div className="connection-wrapper">
+          <div className="connection-info">
+            <h1>{connected ? connectionInfo.ip : ''}</h1>
+            <p>{connected ? '🟢 Connected' : '🔴 Disconnected'}</p>
+          </div>
+        </div>
+        <div className="control-btns">
+          <button onClick={showLogo}>Show Logo</button>
+          <button onClick={showBallon}>Show Ballon</button>
+          <button onClick={() => setIsFormOpen(true)}>Send Kml</button>
+          <button onClick={clearLogo}>Clear Logo</button>
+          <button onClick={clearKml}>Clear Kml</button>
+        </div>
+      </div>
     </div>
   );
 }
