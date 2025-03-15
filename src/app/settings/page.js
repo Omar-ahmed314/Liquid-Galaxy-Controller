@@ -2,6 +2,7 @@
 
 import { URL } from '../config';
 import { useState, useEffect, useRef } from 'react';
+import { setConnection, getConnection } from '../assets/auth';
 import axios from 'axios';
 
 export default function Settings() {
@@ -13,7 +14,7 @@ export default function Settings() {
   const portRef = useRef('');
 
   useEffect(() => {
-    const data = localStorage.getItem('lg-connection');
+    const data = getConnection();
     if (data) {
       setConnected(true);
     }
@@ -36,10 +37,8 @@ export default function Settings() {
         'Content-Type': 'application/json',
       },
     });
-    localStorage.setItem(
-      'lg-connection',
-      JSON.stringify({ ...data, machinesCount })
-    );
+    setConnection({ ...data, machinesCount });
+
     return response.data;
   };
 
