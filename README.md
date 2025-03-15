@@ -13,10 +13,18 @@ npm install
 ```
 
 ## Build
-
+### using npm
 ```bash
 npm run build
 npm start
 ```
+
+### using Docker
+- Install Docker
+- run
+  ```
+  docker build -t lg-client:1.0 .
+  docker run -d -p 8080:8080 --name lg lg-client
+  ```
 
 Go to http://localhost:8080
