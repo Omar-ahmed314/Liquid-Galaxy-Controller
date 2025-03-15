@@ -1,5 +1,5 @@
 'use client';
-import styles from './page.module.css';
+
 import showLogo from './controllers/showLogo';
 import clearLogo from './controllers/clearLogo';
 import sendKml from './controllers/sendKml';
@@ -7,13 +7,21 @@ import clearKml from './controllers/clearKml';
 import showBallon from './controllers/showBallon';
 import relaunch from './controllers/relaunchLg';
 import { getConnection } from './assets/auth';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 export default function Home() {
-  const connectionInfo = getConnection();
-  const connected = connectionInfo ? true : false;
+  const [connectionInfo, setConnectionInfo] = useState(null);
+  const [connected, setConnected] = useState(false);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const fileInput = useRef(null);
+
+  useEffect(() => {
+    const connection = getConnection();
+    if (connection) {
+      setConnectionInfo(connection);
+      setConnected(true);
+    }
+  }, []);
 
   const handleSubmit = async function () {
     const file = fileInput.current.files[0];
