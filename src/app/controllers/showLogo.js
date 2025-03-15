@@ -9,7 +9,7 @@ xmlns:atom="http://www.w3.org/2005/Atom">
   <Document>
   <name>Lg Logo</name>
   <open>1</open>
-  <description>This logo is located at the left most screen</description>
+  <description>Lg Logo</description>
   <Folder>  
   <name>tags</name>
   <Style>
@@ -19,7 +19,7 @@ xmlns:atom="http://www.w3.org/2005/Atom">
     <maxSnippetLines>2</maxSnippetLines>
     </ListStyle>
   </Style>
-  <ScreenOverlay>
+  <ScreenOverlay id="abc">
   <name>Liquid Galaxy Logo</name>
       <Icon>
         <href>https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgXmdNgBTXup6bdWew5RzgCmC9pPb7rK487CpiscWB2S8OlhwFHmeeACHIIjx4B5-Iv-t95mNUx0JhB_oATG3-Tq1gs8Uj0-Xb9Njye6rHtKKsnJQJlzZqJxMDnj_2TXX3eA5x6VSgc8aw/s320-rw/LOGO+LIQUID+GALAXY-sq1000-+OKnoline.png</href>

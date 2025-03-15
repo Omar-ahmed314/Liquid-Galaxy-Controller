@@ -10,8 +10,7 @@
   /* background-color: antiquewhite; */
 }
 
-.connection-wrapper,
-.control-btns {
+.connection-wrapper {
   height: 50%;
 }
 
@@ -30,6 +29,7 @@
 
 .control-btns {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
@@ -49,6 +49,10 @@
   transition: all 0.3s ease;
 }
 
+.control-btns button {
+  margin-bottom: 10px;
+}
+
 .control-btns button:hover,
 .confirm-btns button:hover {
   box-shadow: 0 0 5px 2px var(--settings-border-1);
@@ -66,11 +70,12 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
-    /* background-color: antiquewhite; */
   }
   .control-btns button {
-    /* width: 50%; */
+    width: 100%;
+    margin: 0;
     align-self: start;
+    justify-self: stretch;
   }
 }
 

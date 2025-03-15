@@ -5,6 +5,7 @@ import clearLogo from './controllers/clearLogo';
 import sendKml from './controllers/sendKml';
 import clearKml from './controllers/clearKml';
 import showBallon from './controllers/showBallon';
+import relaunch from './controllers/relaunchLg';
 import { getConnection } from './assets/auth';
 import { useState, useRef } from 'react';
 
@@ -46,7 +47,11 @@ export default function Home() {
       <div className="home-container container">
         <div className="connection-wrapper">
           <div className="connection-info">
-            <h1>{connected ? connectionInfo.ip : ''}</h1>
+            <h1>
+              {connected
+                ? connectionInfo.ip
+                : 'We Connect You to the World, try?'}
+            </h1>
             <p>{connected ? '🟢 Connected' : '🔴 Disconnected'}</p>
           </div>
         </div>
@@ -56,6 +61,7 @@ export default function Home() {
           <button onClick={() => setIsFormOpen(true)}>Send Kml</button>
           <button onClick={clearLogo}>Clear Logo</button>
           <button onClick={clearKml}>Clear Kml</button>
+          <button onClick={relaunch}>Relaunch</button>
         </div>
       </div>
     </div>
